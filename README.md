@@ -38,7 +38,7 @@ packages/
 No arquivo `packages` do seu projeto:
 
 ```
-source 'https://cdn.jsdelivr.net/gh/oleonardomedeiros/tpm-registry@main'
+source 'https://cdn.jsdelivr.net/gh/oleonardomedeiros/tpm-registry@master'
 
 package 'api-financeiro', '1.0.0'
 ```
