@@ -1,0 +1,35 @@
+#include "protheus.ch"
+
+/*
+ * tpm-exemplo 1.0.0
+ * Pacote de exemplo para o TPM - TOTVS Package Manager
+ */
+
+// Retorna saudação formatada com nome e hora do servidor
+Function TPMExSaudacao(cNome)
+    Local cHora := Time()
+    Local cSauda := ""
+
+    If Val(Left(cHora, 2)) < 12
+        cSauda := "Bom dia"
+    ElseIf Val(Left(cHora, 2)) < 18
+        cSauda := "Boa tarde"
+    Else
+        cSauda := "Boa noite"
+    EndIf
+
+Return cSauda + ", " + cNome + "!"
+
+// Formata CPF (00000000000 -> 000.000.000-00)
+Function TPMExFormatCPF(cCPF)
+    Local cLimpo := StrTran(StrTran(StrTran(cCPF, ".", ""), "-", ""), " ", "")
+
+    If Len(cLimpo) <> 11
+        Return cCPF
+    EndIf
+
+Return Left(cLimpo, 3) + "." + SubStr(cLimpo, 4, 3) + "." + SubStr(cLimpo, 7, 3) + "-" + Right(cLimpo, 2)
+
+// Verifica se uma string está vazia ou contém apenas espaços
+Function TPMExVazio(cStr)
+Return Len(AllTrim(cStr)) == 0
